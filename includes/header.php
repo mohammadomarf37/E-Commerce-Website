@@ -25,12 +25,25 @@
 <body>
 
     <!-- Loader -->
-    <div id="preloader" class="position-fixed top-0 start-0 w-100 h-100 bg-dark d-flex justify-content-center align-items-center flex-column" style="z-index: 9999;">
+    <!-- <div id="preloader" class="position-fixed top-0 start-0 w-100 h-100 bg-dark d-flex justify-content-center align-items-center flex-column" style="z-index: 9999;">
         <h4 class="text-white mb-3">Loading...</h4>
         <div class="progress w-75" style="height: 20px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 100%;"></div>
         </div>
-    </div>
+    </div> -->
+    <!-- From Uiverse.io by mobinkakei --> 
+<!-- Loader -->
+<div id="page-loader">
+  <div class="wrapper">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+  </div>
+</div>
+
 
 
 

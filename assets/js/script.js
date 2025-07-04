@@ -1,15 +1,16 @@
-//  Loader
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("preloader");
+// Optional: Prevent scroll while loader is visible
+  document.body.style.overflow = 'hidden';
 
-  // Fade out loader after page fully loaded
-  preloader.classList.add("fade-out");
+  window.addEventListener("load", function () {
+    const loader = document.getElementById("page-loader");
+    loader.classList.add("fade-out");
 
-  // Completely hide it after transition
-  setTimeout(() => {
-    preloader.style.display = "none";
-  }, 500);
-});
+    // Remove loader and allow scroll
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflow = 'auto';
+    }, 500);
+  });
 
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
