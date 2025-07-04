@@ -76,8 +76,8 @@ if (isset($_GET['id'])) {
                             <p style="font-size: 1.1rem; line-height: 1.7;"><?php echo $product['description']; ?></p>
 
                             <div class="mt-4">
-                                <a href="#" class="btn btn-primary btn-lg me-3">Buy Now</a>
-                                <a href="#" class="btn btn-outline-light btn-lg">Add to Cart</a>
+                                <a href="#"><button class="sp-btn" role="button"><span class="text">Buy Now</span></button></a>
+                                <a href="#"><button class="sp-btn atc-btn" role="button"><span class="text">Add To Cart</span></button></a>
                             </div>
                         </div>
                     </div>

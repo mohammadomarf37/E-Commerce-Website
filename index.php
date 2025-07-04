@@ -12,13 +12,13 @@
 </section>
 
 <!-- Featured Products -->
-<section id="products" class="py-5">
+<section id="products" class="py-5 ">
     <div class="container text-center">
-        <h2 class="animate__animated animate__lightSpeedInLeft mb-4 fw-bold">Featured Products</h2>
+        <h2 class="animate-on-scroll hidden animate__flip mb-4 fw-bold" >Featured Products</h2>
 
         <div class="custom-grid">
             <!-- Card 1 -->
-            <div class="product-card card-bg-1 animate__animated animate__jackInTheBox" >
+            <div class="product-card card-bg-1 animate-on-scroll hidden animate__flip" >
                 <div class="product-info">
                     <h5>Premium Hoodie</h5>
                     <p>$39.99</p>
@@ -28,7 +28,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="product-card card-bg-2 animate__animated animate__jackInTheBox">
+            <div class="product-card card-bg-2 animate-on-scroll hidden animate__flip" >
                 <div class="product-info">
                     <h5>Casual Jacket</h5>
                     <p>$49.99</p>
@@ -38,7 +38,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="product-card card-bg-3 animate__animated animate__jackInTheBox">
+            <div class="product-card card-bg-3 animate-on-scroll hidden animate__flip">
                 <div class="product-info">
                     <h5>Stylish Shoes</h5>
                     <p>$59.99</p>
@@ -51,5 +51,6 @@
 
 
 </section>
+
 
 <?php include 'includes/footer.php'; ?>
