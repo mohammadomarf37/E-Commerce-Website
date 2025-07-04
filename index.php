@@ -2,55 +2,56 @@
 
 
 <!-- Hero Section -->
-<section class="hero-section py-5 bg-primary text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-        <h1 class="display-4 fw-bold animate__animated animate__bounceInDown">Shop the Latest Trends</h1>
-        <p class="lead animate__animated animate__bounceInLeft">High-quality products at unbeatable prices.</p>
-        <a href="#products" class=" "><button class="mt-5 button-48 animate__animated animate__bounceInLeft" role="button"><span class="text">Shop Now</span></button></a>
-    </div>
-</section>
+    <section class="hero-section py-5 bg-primary text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1 class="display-4 fw-bold animate__animated animate__bounceInDown">Shop the Latest Trends</h1>
+            <p class="lead animate__animated animate__bounceInLeft">High-quality products at unbeatable prices.</p>
+            <a href="#products" class=" "><button class="mt-5 button-48 animate__animated animate__bounceInLeft" role="button"><span class="text">Shop Now</span></button></a>
+        </div>
+    </section>
+
 
 <!-- Featured Products -->
-<section id="products" class="py-5 ">
-    <div class="container text-center">
-        <h2 class="animate-on-scroll hidden animate__flip mb-4 fw-bold" >Featured Products</h2>
+    <section id="products" class="py-5 ">
+        <div class="container text-center">
+            <h2 class="animate-on-scroll hidden animate__flip mb-4 fw-bold" >Featured Products</h2>
 
-        <div class="custom-grid">
-            <!-- Card 1 -->
-            <div class="product-card card-bg-1 animate-on-scroll hidden animate__flip" >
-                <div class="product-info">
-                    <h5>Premium Hoodie</h5>
-                    <p>$39.99</p>
-                    <!-- <a href="#" class="btn btn-dark-bold">Add to Cart</a> -->
-                    <a href="product.php?id=1"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
+            <div class="custom-grid">
+                <!-- Card 1 -->
+                <div class="product-card card-bg-1 animate-on-scroll hidden animate__flip" >
+                    <div class="product-info">
+                        <h5>Premium Hoodie</h5>
+                        <p>$39.99</p>
+                        <!-- <a href="#" class="btn btn-dark-bold">Add to Cart</a> -->
+                        <a href="product.php?id=1"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card card-bg-2 animate-on-scroll hidden animate__flip" >
+                    <div class="product-info">
+                        <h5>Casual Jacket</h5>
+                        <p>$49.99</p>
+                        <a href="product.php?id=2"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
+
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card card-bg-3 animate-on-scroll hidden animate__flip">
+                    <div class="product-info">
+                        <h5>Stylish Shoes</h5>
+                        <p>$59.99</p>
+                        <a href="product.php?id=3"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="product-card card-bg-2 animate-on-scroll hidden animate__flip" >
-                <div class="product-info">
-                    <h5>Casual Jacket</h5>
-                    <p>$49.99</p>
-                    <a href="product.php?id=2"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
-
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="product-card card-bg-3 animate-on-scroll hidden animate__flip">
-                <div class="product-info">
-                    <h5>Stylish Shoes</h5>
-                    <p>$59.99</p>
-                    <a href="product.php?id=3"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
-                </div>
-            </div>
         </div>
 
-    </div>
 
-
-</section>
+    </section>
 
 
 <?php include 'includes/footer.php'; ?>

@@ -22,6 +22,108 @@
         opacity: 0;
         visibility: hidden;
     }
+    /* Loader Container */
+    #page-loader {
+    position: fixed;
+    inset: 0;
+    background-color: #121212;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    /* Fade-out effect */
+    #page-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    }
+
+    /* From Uiverse.io by mobinkakei */
+    .wrapper {
+    width: 200px;
+    height: 60px;
+    position: relative;
+    }
+
+    .circle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    left: 15%;
+    transform-origin: 50%;
+    animation: circle7124 0.5s alternate infinite ease;
+    }
+
+    @keyframes circle7124 {
+    0% {
+        top: 60px;
+        height: 5px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+    40% {
+        height: 20px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0%;
+    }
+    }
+
+    .circle:nth-child(2) {
+    left: 45%;
+    animation-delay: 0.2s;
+    }
+
+    .circle:nth-child(3) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+    }
+
+    .shadow {
+    width: 20px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 62px;
+    transform-origin: 50%;
+    z-index: -1;
+    left: 15%;
+    filter: blur(1px);
+    animation: shadow046 0.5s alternate infinite ease;
+    }
+
+    @keyframes shadow046 {
+    0% {
+        transform: scaleX(1.5);
+    }
+    40% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scaleX(0.2);
+        opacity: 0.4;
+    }
+    }
+
+    .shadow:nth-child(4) {
+    left: 45%;
+    animation-delay: 0.2s;
+    }
+
+    .shadow:nth-child(5) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+    }
 
 
 /* Navbar */
@@ -46,6 +148,182 @@
 
     .navbar-nav .nav-link:hover {
         color: #0d6efd; /* Your accent color */
+    }
+
+
+    /* Suggestion dropdown box (Search Bar) */
+    .s-bar{
+        height: 2.7rem;
+        width: 17rem;
+        background: transparent;
+        border: 2px #bbbbbb solid;
+        border-radius: 9px;
+        color: #bbbbbb;
+        padding-left: .4rem;
+        outline: 2px red;
+
+    }
+    .s-bar::placeholder{
+        color: #bbbbbb;
+        padding-left: .2rem;
+    }
+    .s-bar:focus{
+        outline: none;
+        /* border: none; */
+        border-color: #bbbbbb;
+        box-shadow: none;
+    }
+    /* Icon inside input */
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        background: transparent;
+        cursor: pointer;
+        border: none;
+        color: #bbbbbb;
+        font-size: 16px;
+        /* pointer-events: none; */
+    }
+
+    /* Media Queries */
+    @media (max-width: 991px){
+        .search-icon{
+            /* right: 27rem; */
+            left: -11rem;
+        }
+    }
+    @media (max-width: 767px){
+        .search-icon{
+            left: 0rem;
+        }
+    }
+    @media (max-width: 575px){
+        .search-icon{
+            left: -2rem;
+        }
+    }
+    @media (max-width: 425px){
+        .search-icon{
+            left: 7rem;
+        }
+    }
+    @media (max-width: 375px){
+        .search-icon{
+            left: 10rem;
+        }
+    }
+    @media (max-width: 320px){
+        .search-icon{
+            left: 14rem;
+        }
+    }
+    
+    /* Blur everything except search bar */
+    body.search-active main,
+    body.search-active section,
+    body.search-active footer,
+    body.search-active .custom-grid,
+    body.search-active .hero,
+    body.search-active .featured-section {
+        filter: blur(10px);
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .suggestion-box {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 96.5%; /* Match input width */
+        background: transparent;
+        border: 2px solid #bbbbbb;
+        color: #bbbbbb;
+        border-top: none;
+        z-index: 9999;
+        display: none;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-height: 250px;
+        overflow-y: auto;
+        border-radius: 0 0 9px 9px;
+    }
+
+    /* Each item in suggestions */
+    .suggestion-box div {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #bbbbbb;
+    /* transition: background 0.2s; */
+    }
+
+    
+
+
+    /* Search Button */
+    .s-btn {
+        appearance: none;
+        background-color: transparent;
+        height: 3.1rem;
+        width: 8rem;
+        border-width: 0;
+        border: 2px #bbbbbb solid;
+        border-radius: 10px;
+        box-sizing: border-box;
+        color: #bbbbbb;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Clarkson,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1;
+        line-height: 1em;
+        margin: 0;
+        opacity: 1;
+        outline: 0;
+        /* padding: 1.5em 2.2em; */
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-rendering: geometricprecision;
+        text-transform: uppercase;
+        transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        white-space: nowrap;
+    }
+    .s-btn:before {
+        animation: opacityFallbackOut .5s step-end forwards;
+        backface-visibility: hidden;
+        background-color: #bbbbbb;
+        clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        border-radius: 8px;
+        top: 0;
+        transform: translateZ(0);
+        transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+        width: 100%;
+    }
+    .s-btn:hover{
+        color: white;
+    }
+    .s-btn:hover:before {
+        animation: opacityFallbackIn 0s step-start forwards;
+        clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    }
+    .s-btn:after {
+        background-color: #FFFFFF;
+        color: white;
+    }
+    .s-btn span {
+        z-index: 1;
+        position: relative;
     }
 
 
@@ -325,106 +603,10 @@
         }
     }
 
-/* Loader Container */
-#page-loader {
-  position: fixed;
-  inset: 0;
-  background-color: #121212;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
 
-/* Fade-out effect */
-#page-loader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
 
-/* From Uiverse.io by mobinkakei */
-.wrapper {
-  width: 200px;
-  height: 60px;
-  position: relative;
-}
 
-.circle {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  border-radius: 50%;
-  background-color: #fff;
-  left: 15%;
-  transform-origin: 50%;
-  animation: circle7124 0.5s alternate infinite ease;
-}
 
-@keyframes circle7124 {
-  0% {
-    top: 60px;
-    height: 5px;
-    border-radius: 50px 50px 25px 25px;
-    transform: scaleX(1.7);
-  }
-  40% {
-    height: 20px;
-    border-radius: 50%;
-    transform: scaleX(1);
-  }
-  100% {
-    top: 0%;
-  }
-}
 
-.circle:nth-child(2) {
-  left: 45%;
-  animation-delay: 0.2s;
-}
 
-.circle:nth-child(3) {
-  left: auto;
-  right: 15%;
-  animation-delay: 0.3s;
-}
-
-.shadow {
-  width: 20px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  top: 62px;
-  transform-origin: 50%;
-  z-index: -1;
-  left: 15%;
-  filter: blur(1px);
-  animation: shadow046 0.5s alternate infinite ease;
-}
-
-@keyframes shadow046 {
-  0% {
-    transform: scaleX(1.5);
-  }
-  40% {
-    transform: scaleX(1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scaleX(0.2);
-    opacity: 0.4;
-  }
-}
-
-.shadow:nth-child(4) {
-  left: 45%;
-  animation-delay: 0.2s;
-}
-
-.shadow:nth-child(5) {
-  left: auto;
-  right: 15%;
-  animation-delay: 0.3s;
-}
 

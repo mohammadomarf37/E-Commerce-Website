@@ -20,6 +20,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -31,22 +34,18 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 100%;"></div>
         </div>
     </div> -->
-    <!-- From Uiverse.io by mobinkakei --> 
-<!-- Loader -->
-<div id="page-loader">
-  <div class="wrapper">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="shadow"></div>
-    <div class="shadow"></div>
-    <div class="shadow"></div>
-  </div>
-</div>
-
-
-
-
+    <!-- From Uiverse.io by mobinkakei -->
+    <!-- Loader -->
+    <div id="page-loader">
+        <div class="wrapper">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+        </div>
+    </div>
 
 
     <header>
@@ -88,9 +87,20 @@
                             <a class="nav-link" href="cart.php">🛒 Cart</a>
                         </li>
 
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Login</a>
                         </li>
+
+                        <div class="search-form-wrapper">
+                            <form class="d-flex position-relative" action="search.php" method="GET" autocomplete="off">
+                                <input type="text" id="search-input" name="q" class="s-bar me-2" placeholder="Search products..." required>
+                                <button class="search-icon"><i class="fas fa-search "></i></button>
+                                <div id="suggestions" class="suggestion-box"></div>
+                            </form>
+                        </div>
+
 
                         <!-- After login you can replace with: -->
                         <!-- <li class="nav-item"><a class="nav-link" href="account.php">My Account</a></li> -->
