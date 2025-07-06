@@ -77,7 +77,7 @@ if (isset($_GET['id'])) {
 
                             <div class="mt-4">
                                 <a href="#"><button class="sp-btn" role="button"><span class="text">Buy Now</span></button></a>
-                                <a href="#"><button class="sp-btn atc-btn" role="button"><span class="text">Add To Cart</span></button></a>
+                                <a href="add_to_cart.php?id=<?= $product['id'] ?>"><button class="sp-btn atc-btn" role="button"><span class="text">Add To Cart</span></button></a>
                             </div>
                         </div>
                     </div>

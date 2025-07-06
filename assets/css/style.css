@@ -610,3 +610,210 @@
 
 
 
+.filter-sidebar {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+}
+
+.filter-group label {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .filter-sidebar {
+    display: none;
+  }
+
+  .filter-sidebar.mobile-active {
+    display: block !important;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+/* Hide filter bar on mobile */
+@media (max-width: 768px) {
+  .filter-bar {
+    display: none;
+    background: #111;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+
+  .filter-bar.active {
+    display: block;
+  }
+}
+@media (max-width: 768px){
+    .filter-btn{
+        display: block !important;
+    }
+}
+
+
+
+.animate-on-scroll.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Common animation setup */
+.fade-in-left, .fade-in-right {
+  opacity: 0;
+  transform: translateX(0);
+  animation-fill-mode: forwards;
+}
+
+/* Left Animation */
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Right Animation */
+.fade-in-right {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Base hidden state */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Apni animations */
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+.custom-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+  min-height: 300px;
+  margin-bottom: 50px;
+}
+@media (max-width: 862px) {
+  .custom-carousel {
+    height: 300px; /* Adjust based on your design */
+  }
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #00000088;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* prevent wrapping */
+  z-index: 5;
+  padding: 0;
+  margin: 0;
+}
+
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background: #bbb;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #fff;
+}

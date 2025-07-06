@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +22,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -83,15 +85,12 @@
                     </ul>
 
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="cart.php">🛒 Cart</a>
-                        </li>
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php">Login</a>
-                        </li>
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <a href="cart.php" class="nav-link">🛒 Cart</a>
+                            <a href="logout.php" class="nav-link">Logout</a>
+                        <?php else: ?>
+                            <a href="login.php" class="nav-link">Login</a>
+                        <?php endif; ?>
 
                         <div class="search-form-wrapper">
                             <form class="d-flex position-relative" action="search.php" method="GET" autocomplete="off">

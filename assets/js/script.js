@@ -83,6 +83,102 @@ searchInput.addEventListener('blur', () => {
 
 
 
+
+
+
+
+
+
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
+}
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentIndex = index;
+    updateCarousel();
+  });
+});
+
+// Auto slide every 5 seconds
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+}, 4000);
+
+
+
+  // const observe = new IntersectionObserver((entries, observer) => {
+  //   entries.forEach(entry => {
+  //     if (entry.isIntersecting) {
+  //       const el = entry.target;
+  //       const animationClass = el.dataset.animate;
+  //       el.classList.add(animationClass);
+  //       el.classList.remove('scroll-animate');
+  //       observe.unobserve(el); // Animate only once
+  //     }
+  //   });
+  // }, {
+  //   threshold: 0.1
+  // });
+
+  // // Observe all .scroll-animate elements
+  // document.querySelectorAll('.scroll-animate').forEach(el => {
+  //   observe.observe(el);
+  // });
+
+
+
+
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach(entry => {
+  //     if (entry.isIntersecting) {
+  //       const el = entry.target;
+
+  //       // Check if not already animated
+  //       if (!el.classList.contains('visible')) {
+  //         el.classList.add('visible');
+
+  //         // Add animate__animated if not already present
+  //         if (!el.classList.contains('animate__animated')) {
+  //           el.classList.add('animate__animated');
+  //         }
+
+  //         // Remove hidden so it becomes visible
+  //         el.classList.remove('hidden');
+
+  //         // Animate once only
+  //         observer.unobserve(el);
+  //       }
+  //     }
+  //   });
+  // });
+
+  // // Observe all elements with .animate-on-scroll
+  // document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+
+//  const toggleBtn = document.getElementById("toggleFilters");
+//   const filterSidebar = document.getElementById("filterSidebar");
+
+//   toggleBtn.addEventListener("click", () => {
+//     filterSidebar.classList.toggle("mobile-active");
+//   });
+
+  //  const toggleBtn = document.getElementById("toggleFilters");
+  // const filterSidebar = document.getElementById("filterSidebar");
+
+  // toggleBtn.addEventListener("click", () => {
+  //   filterSidebar.classList.toggle("mobile-active");
+  //   toggleBtn.textContent = filterSidebar.classList.contains("mobile-active") ? "Hide Filters" : "Show Filters";
+  // });
 //   window.addEventListener("load", function () {
 //     const preloader = document.getElementById("preloader");
 
