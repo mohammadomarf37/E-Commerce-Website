@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,15 +71,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.php?category=men">Men</a>
+                            <a class="nav-link" href="#">Men</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.php?category=women">Women</a>
+                            <a class="nav-link" href="#">Women</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.php?category=kids">Kids</a>
+                            <a class="nav-link" href="#">Kids</a>
                         </li>
 
                     </ul>

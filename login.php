@@ -1,7 +1,6 @@
 <?php
 session_start();
-// include 'includes/header.php';
-
+ob_start();
 include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,23 +11,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($conn, $query);
 
     if ($user = mysqli_fetch_assoc($result)) {
-        
-            $_SESSION['user'] = $user;
-            header('Location: index.php'); // Redirect after login
-            exit();
-        
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email']
+        ];
+        header("Location: index.php");
+        exit();
     } else {
-        echo "❌ No user found.";
+        $error = "❌ No user found.";
     }
 }
 ?>
 
+<?php include 'includes/header.php'; ?>
 
-<form method="POST" action="login.php">
+<style>
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background-color: #1c1c1c;
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    font-family: Arial, sans-serif;
+}
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #333;
+    color: #fff;
+}
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.login-container button:hover {
+    background-color: #218838;
+}
+.login-container p {
+    text-align: center;
+    margin-top: 15px;
+}
+.login-container a {
+    color: #00d9ff;
+    text-decoration: none;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+.error-message {
+    color: #ff4d4d;
+    margin-bottom: 15px;
+    text-align: center;
+}
+</style>
+
+<div class="login-container">
     <h2>Login</h2>
-    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit">Login</button>
-    <p>You're not registered? <a href="register.php">Register</a></p>
-</form>
+    <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
+    <form method="POST" action="login.php">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">Login</button>
+        <p>You're not registered? <a href="register.php">Register</a></p>
+    </form>
+</div>
+
+<?php include 'includes/footer.php'; ?>
+<?php ob_end_flush(); ?>

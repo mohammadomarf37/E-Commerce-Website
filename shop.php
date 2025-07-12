@@ -1,5 +1,6 @@
 <!-- shop.php -->
 <?php
+session_start();
 include 'config.php';
 include 'includes/header.php';
 
@@ -75,7 +76,7 @@ $result = mysqli_query($conn, $sql);
 
 
         <!-- Product Cards -->
-        <div class="col-md-9 p-4 ">
+        <div class="col-md-9 p-4 animate__animated animate__fadeInRight">
             <div class="row">
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                     <div class="col-md-4 mb-4">
