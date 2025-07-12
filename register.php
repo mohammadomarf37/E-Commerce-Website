@@ -2,6 +2,9 @@
 ob_start();
 // session_start();
 include 'config.php';
+$page = 'register'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,63 +28,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include 'includes/header.php'; ?>
 
+<head>
+    <title>MyClothify - Register</title>
+</head>
 <style>
-.register-form {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 25px;
-    /* background: #222; */
-    background-color: #1c1c1c;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    font-family: Arial, sans-serif;
-    border-radius: 10px;
-    color: white;
-}
-.register-form h2 {
-    text-align: center;
-    margin-bottom: 25px;
-}
-.register-form input {
-    width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    background: #333;
-    color: #fff;
-}
+    .register-form {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 25px;
+        /* background: #222; */
+        background-color: #1c1c1c;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        font-family: Arial, sans-serif;
+        border-radius: 10px;
+        color: white;
+    }
 
-.register-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    border: none;
-    font-weight: bold;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-.register-form button:hover {
-    background-color: #218838;
-}
-.register-form p {
-    text-align: center;
-    margin-top: 15px;
-}
-.register-form a {
-    color: #00d9ff;
-    text-decoration: none;
-}
-.register-form a:hover {
-    text-decoration: underline;
-}
-.error-message {
-    color: #ff4d4d;
-    margin-bottom: 15px;
-    text-align: center;
-}
+    .register-form h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .register-form input {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background: #333;
+        color: #fff;
+    }
+
+    .register-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        border: none;
+        font-weight: bold;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .register-form button:hover {
+        background-color: #218838;
+    }
+
+    .register-form p {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .register-form a {
+        color: #00d9ff;
+        text-decoration: none;
+    }
+
+    .register-form a:hover {
+        text-decoration: underline;
+    }
+
+    .error-message {
+        color: #ff4d4d;
+        margin-bottom: 15px;
+        text-align: center;
+    }
 </style>
 
 <form method="POST" class="register-form">

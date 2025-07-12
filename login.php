@@ -2,6 +2,9 @@
 session_start();
 ob_start();
 include 'config.php';
+$page = 'login'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -24,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'includes/header.php'; ?>
-
+<head>
+<title>MyClothify - Login</title>
+</head>
 <style>
 .login-container {
     max-width: 400px;

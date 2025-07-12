@@ -64,6 +64,11 @@ $result = mysqli_query($conn, $sql);
                         <?= in_array('shirt', $selectedCategories) ? 'checked' : '' ?>>
                     Shirt
                 </div>
+                <div>
+                    <input type="checkbox" name="category[]" value="sneakers"
+                        <?= in_array('sneakers', $selectedCategories) ? 'checked' : '' ?>>
+                    Sneakers
+                </div>
 
                 <button type="submit" class="btn btn-primary btn-sm mt-2">Apply Filter</button>
                 <a href="index.php#all-products" class="btn btn-outline-light btn-sm mt-2">Clear Filters</a>

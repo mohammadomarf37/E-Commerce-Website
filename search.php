@@ -3,13 +3,18 @@ include 'config.php';
 include 'includes/header.php';
 $q = $_GET['q'] ?? '';
 
+$page = 'search'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 $query = "SELECT * FROM products WHERE name LIKE '%$q%' OR description LIKE '%$q%'";
 $result = mysqli_query($conn, $query);
 ?>
 
 
 
-
+<head>
+<title>MyClothify - Search</title>
+</head>
 
 <div class="container py-5">
   <h2>Search Results for: <strong><?= htmlspecialchars($q) ?></strong></h2>

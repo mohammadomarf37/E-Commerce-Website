@@ -1,8 +1,15 @@
 <?php 
 session_start();
 include 'includes/header.php'; 
+include 'config.php';
+$page = 'home'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 ?>
 
+<head>
+<title>MyClothify - Home</title>
+</head>
 
 <!-- Hero Section -->
 <section class="hero-section py-5 bg-primary text-white text-center">

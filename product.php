@@ -4,6 +4,9 @@ session_start();
 
 include 'config.php';
 include 'includes/header.php';
+$page = 'product'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 
 
 
@@ -26,8 +29,9 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-
-
+<head>
+<title>MyClothify - Product</title>
+</head>
 <style>
     main {
         min-height: 75.7vh;

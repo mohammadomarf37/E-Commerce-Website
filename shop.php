@@ -3,6 +3,9 @@
 session_start();
 include 'config.php';
 include 'includes/header.php';
+$page = 'shop'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
+
 
 // Fetch filtered or all products
 $products = [];
@@ -29,22 +32,26 @@ if (isset($_GET['category'])) {
 $result = mysqli_query($conn, $sql);
 ?>
 
+
+
 <!-- HTML START -->
-    <!-- <h2 class=" mb-4 fw-bold text-center" id="all-products">All Products</h2> -->
 
-    <h3 class="" id="filter-btn" onclick="toggleFilters()">Filters <i class="fa-duotone fas fa-regular fa-filter"></i></h3>
-        <script>
-  function toggleFilters() {
-    const filterBar = document.getElementById('filter-bar');
-    filterBar.classList.toggle('active');
-  }
+<head>
+    <title>MyClothify - Shop</title>
+</head>
+<!-- <h2 class=" mb-4 fw-bold text-center" id="all-products">All Products</h2> -->
 
-  
+<h3 class="" id="filter-btn" onclick="toggleFilters()">Filters <i class="fa-duotone fas fa-regular fa-filter"></i></h3>
+<script>
+    function toggleFilters() {
+        const filterBar = document.getElementById('filter-bar');
+        filterBar.classList.toggle('active');
+    }
 </script>
 <div class="container-fluid ">
     <div class="row">
         <!-- Filter Sidebar -->
-        <div id="filter-bar"  class="filter-bar col-md-3 p-3 bg-dark text-white animate__animated animate__fadeInLeft">
+        <div id="filter-bar" class="filter-bar col-md-3 p-3 bg-dark text-white animate__animated animate__fadeInLeft">
             <h5>Filter Products</h5>
             <?php
             $selectedCategories = isset($_GET['category']) ? $_GET['category'] : [];
@@ -65,14 +72,19 @@ $result = mysqli_query($conn, $sql);
                         <?= in_array('shirt', $selectedCategories) ? 'checked' : '' ?>>
                     Shirt
                 </div>
+                <div>
+                    <input type="checkbox" name="category[]" value="sneakers"
+                        <?= in_array('sneakers', $selectedCategories) ? 'checked' : '' ?>>
+                    Sneakers
+                </div>
 
                 <button type="submit" class="btn btn-primary btn-sm mt-2">Apply Filter</button>
                 <a href="shop.php" class="btn btn-outline-light btn-sm mt-2">Clear Filters</a>
             </form>
         </div>
 
-         <!-- Filter button for mobile -->
-     
+        <!-- Filter button for mobile -->
+
 
 
         <!-- Product Cards -->
@@ -80,7 +92,7 @@ $result = mysqli_query($conn, $sql);
             <div class="row">
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                     <div class="col-md-4 mb-4">
-                        <div style="background: url(assets/images/<?= $row['image']?>); background-repeat: no-repeat; background-size: cover; background-position: center;" class="product-card">
+                        <div style="background: url(assets/images/<?= $row['image'] ?>); background-repeat: no-repeat; background-size: cover; background-position: center;" class="product-card">
                             <!-- <img src="assets/images/<?= $row['image'] ?>" class="card-img-top" alt="<?= $row['name'] ?>"> -->
                             <div class="product-info">
                                 <h5><?= $row['name'] ?></h5>

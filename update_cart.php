@@ -1,6 +1,6 @@
 <?php
-include 'config.php';
 session_start();
+include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cart_id'], $_POST['quantity'])) {
     $cart_id = intval($_POST['cart_id']);

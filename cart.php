@@ -2,6 +2,8 @@
 session_start();
 include 'config.php';
 include 'includes/header.php';
+$page = 'cart'; // Change this on each page accordingly
+mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
 
 
 
@@ -19,7 +21,9 @@ $sql = "SELECT cart.id AS cart_id, cart.product_id, products.name, products.pric
 
 $result = mysqli_query($conn, $sql);
 ?>
-
+<head>
+    <title>MyClothify - Cart</title>
+</head>
 <div class="container py-5">
     <h2 class="text-center mb-4">Your Cart</h2>
     <?php if (mysqli_num_rows($result) > 0): ?>
@@ -95,7 +99,6 @@ $user_info = mysqli_fetch_assoc($user_query);
             <input type="email" name="email" class="form-control mb-3" value="<?= htmlspecialchars($user_info['email']) ?>" readonly>
             <input type="text" name="contact" class="form-control mb-3" value="<?= htmlspecialchars($user_info['contact']) ?>" readonly>
             <textarea name="address" class="form-control mb-3" placeholder="Enter Delivery Address" required></textarea>
-            <input type="hidden" name="user_id" value="<?= $_SESSION['user']['id'] ?>">
             <button type="submit" class="btn btn-success w-100">Place Order</button>
         </form>
     </div>

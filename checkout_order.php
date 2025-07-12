@@ -10,7 +10,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = intval($_POST['user_id']);
+    $user_id = $_SESSION['user']['id']; 
     $full_name = trim($_POST['full_name']);
     $email = trim($_POST['email']);
     $contact = trim($_POST['contact']);
@@ -75,9 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->setFrom('form.submission4@gmail.com', 'New Cart Checkout!');
         $mail->addAddress('mohammadomarf37@gmail.com');
 
-        $mail->Subject = "🛒 New Cart Order Placed";
+        $mail->Subject = "New Cart Order Placed";
         $mail->Body = "
-            ✅ A New Cart Checkout Order Has Been Placed:
+            A New Cart Checkout Order Has Been Placed:
 
             Full Name: $full_name
             Email: $email

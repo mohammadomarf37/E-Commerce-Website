@@ -1,5 +1,8 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "db_ecommerce");
-
+$hostname = "localhost";
+$username = "root";
+$password = "";
+$database = "db_ecommerce";
+$conn = mysqli_connect($hostname, $username, $password, $database);
 ?>
