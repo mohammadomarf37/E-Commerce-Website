@@ -1,11 +1,11 @@
 <?php
 
 // Localhost
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "db_ecommerce";
-$conn = mysqli_connect($hostname, $username, $password, $database);
+// $hostname = "localhost";
+// $username = "root";
+// $password = "";
+// $database = "db_ecommerce";
+// $conn = mysqli_connect($hostname, $username, $password, $database);
 
 // Infinityfree
 $hostname = "sql309.infinityfree.com";
