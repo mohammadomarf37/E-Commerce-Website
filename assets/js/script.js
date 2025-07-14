@@ -85,30 +85,66 @@ searchInput.addEventListener("blur", () => {
 
 
 // Hero Section Carousel
-const track = document.querySelector(".carousel-track");
-const dots = document.querySelectorAll(".dot");
-const slides = document.querySelectorAll(".carousel-slide");
-let currentIndex = 0;
 
-function updateCarousel() {
-  if (!track) return; // Prevent error if element doesn't exist
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-  dots.forEach((dot) => dot.classList.remove("active"));
-  dots[currentIndex].classList.add("active");
-}
+const track = document.getElementById('carouselTrack');
+let isDragging = false;
+let startX, scrollLeft;
 
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    currentIndex = index;
-    updateCarousel();
-  });
+track.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  track.classList.add('dragging');
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
 });
 
+track.addEventListener('mouseleave', () => {
+  isDragging = false;
+  track.classList.remove('dragging');
+});
+
+track.addEventListener('mouseup', () => {
+  isDragging = false;
+  track.classList.remove('dragging');
+});
+
+track.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  const walk = (x - startX) * 2; // Speed
+  track.scrollLeft = scrollLeft - walk;
+});
+
+// Touch Support
+track.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  startX = e.touches[0].pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+});
+
+track.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
+track.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const x = e.touches[0].pageX - track.offsetLeft;
+  const walk = (x - startX) * 2;
+  track.scrollLeft = scrollLeft - walk;
+});
+
+// Auto Slide
+let autoIndex = 0;
 setInterval(() => {
-  if (slides.length === 0 || !track) return;
-  currentIndex = (currentIndex + 1) % slides.length;
-  updateCarousel();
-}, 4000);
+  const slides = document.querySelectorAll('.carousel-slide');
+  autoIndex = (autoIndex + 1) % slides.length;
+  track.scrollTo({
+    left: autoIndex * track.clientWidth,
+    behavior: 'smooth'
+  });
+}, 3000); // 4 seconds interval
+
+
 
 
 // Buy Now Modal

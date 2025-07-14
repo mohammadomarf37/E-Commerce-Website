@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-include 'includes/header.php'; 
+include 'includes/header.php';
 include 'config.php';
 $page = 'home'; // Change this on each page accordingly
 mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE page_name = '$page'");
@@ -8,7 +8,7 @@ mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE pag
 ?>
 
 <head>
-<title>MyClothify - Home</title>
+    <title>MyClothify - Home</title>
 </head>
 
 <!-- Hero Section -->
@@ -51,7 +51,7 @@ mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE pag
             <!-- Card 3 -->
             <div class="product-card card-bg-3">
                 <div class="product-info">
-                    <h5>Stylish Shoes</h5>
+                    <h5>Stylish Sneakers</h5>
                     <p>$59.99</p>
                     <a href="product.php?id=3"><button class="button-48" role="button"><span class="text">View Details</span></button></a>
                 </div>
@@ -61,22 +61,24 @@ mysqli_query($conn, "UPDATE page_views SET view_count = view_count + 1 WHERE pag
     </div>
 </section>
 
-<div class="custom-carousel">
-  <div class="carousel-track">
-    <div class="carousel-slide"><img src="assets/images/cloth1.jpg" alt="Slide 1"></div>
-    <div class="carousel-slide"><img src="assets/images/cloth2.jpg" alt="Slide 2"></div>
-    <div class="carousel-slide"><img src="assets/images/cloth3.jpg" alt="Slide 3"></div>
-  </div>
+<!-- Carousel -->
+<div class="custom-carousel" id="carouselTrack">
+    <!-- <div class="carousel-track"> -->
+        <div class="carousel-slide"><img src="assets/images/banner3.png" alt="Slide 1"></div>
+        <div class="carousel-slide"><img src="assets/images/banner3.png" alt="Slide 2"></div>
+        <div class="carousel-slide"><img src="assets/images/banner3.png" alt="Slide 3"></div>
+    <!-- </div> -->
+</div>
 
-  <!-- <button class="carousel-btn prev">&#10094;</button>
+    <!-- <button class="carousel-btn prev">&#10094;</button>
   <button class="carousel-btn next">&#10095;</button> -->
 
-  <div class="carousel-dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</div>
+    <!-- <div class="carousel-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div> -->
 
 
 

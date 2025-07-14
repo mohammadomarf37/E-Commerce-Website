@@ -21,7 +21,7 @@ $result = mysqli_query($conn, $query);
 
   <div class="custom-grid mt-4">
     <?php while ($row = mysqli_fetch_assoc($result)): ?>
-      <div class="product-card card-bg-<?= $row['id'] ?>">
+      <div class="product-card card-bg-<?= $row['id'] ?>" style="background-image: url('assets/images/<?= $row['image'] ?>');">
         <div class="product-info">
           <h5><?= $row['name'] ?></h5>
           <p>$<?= $row['price'] ?></p>
