@@ -120,7 +120,7 @@ if (isset($_GET['id'])) {
             <form id="buyNowForm">
                 <div style="margin-bottom: 15px;">
                     <label>Full Name:</label>
-                    <input type="text" name="full_name" value="<?= htmlspecialchars($user['name']) ?>" readonly class="form-control" style="background-color: #2c2c2c; color: white; border: 1px solid #444;">
+                    <input type="text" name="full_name" value="<?= htmlspecialchars($user['name']) ?>" required class="form-control" style="background-color: #2c2c2c; color: white; border: 1px solid #444;">
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label>Email:</label>
@@ -128,7 +128,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label>Contact Number:</label>
-                    <input type="text" name="contact" value="<?= htmlspecialchars($user['contact']) ?>" readonly class="form-control" style="background-color: #2c2c2c; color: white; border: 1px solid #444;">
+                    <input pattern="\d{11}" minlength="11" maxlength="11" title="Contact number must be exactly 11 digits" type="text" name="contact" value="<?= htmlspecialchars($user['contact']) ?>" required class="form-control" style="background-color: #2c2c2c; color: white; border: 1px solid #444;">
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label>Address:</label>
@@ -156,6 +156,3 @@ if (isset($_GET['id'])) {
 
 
     <?php include 'includes/footer.php'; ?>
-</body>
-
-</html>

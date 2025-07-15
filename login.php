@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" name="email" placeholder="Enter your email" required>
         <input type="password" name="password" placeholder="Enter your password" required>
         <button type="submit">Login</button>
-        <p>You're not registered? <a href="register.php">Register</a></p>
+        <p>You're not registered? <a href="register.php?v=1">Register</a></p>
     </form>
 </div>
 

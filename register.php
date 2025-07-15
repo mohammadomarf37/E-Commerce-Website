@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <input type="text" name="contact" placeholder="Contact Number" required>
-    <input type="text" name="address" placeholder="Address" required>
+    <input pattern="\d{11}" minlength="11" maxlength="11" title="Contact number must be exactly 11 digits" type="text" name="address" placeholder="Address" required>
 
     <button type="submit">Register</button>
     <p>Already registered? <a href="login.php">Login</a></p>

@@ -5,7 +5,7 @@
 
     <!-- Bootstrap JS Offline -->
     <script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js?v=1"></script>
 
   </body>
 </html>

@@ -86,96 +86,112 @@ searchInput.addEventListener("blur", () => {
 
 // Hero Section Carousel
 
+
+// Hero Section Carousel
 const track = document.getElementById('carouselTrack');
-let isDragging = false;
-let startX, scrollLeft;
 
-track.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  track.classList.add('dragging');
-  startX = e.pageX - track.offsetLeft;
-  scrollLeft = track.scrollLeft;
-});
+if (track) {
+  let isDragging = false;
+  let startX, scrollLeft;
 
-track.addEventListener('mouseleave', () => {
-  isDragging = false;
-  track.classList.remove('dragging');
-});
-
-track.addEventListener('mouseup', () => {
-  isDragging = false;
-  track.classList.remove('dragging');
-});
-
-track.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - track.offsetLeft;
-  const walk = (x - startX) * 2; // Speed
-  track.scrollLeft = scrollLeft - walk;
-});
-
-// Touch Support
-track.addEventListener('touchstart', (e) => {
-  isDragging = true;
-  startX = e.touches[0].pageX - track.offsetLeft;
-  scrollLeft = track.scrollLeft;
-});
-
-track.addEventListener('touchend', () => {
-  isDragging = false;
-});
-
-track.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  const x = e.touches[0].pageX - track.offsetLeft;
-  const walk = (x - startX) * 2;
-  track.scrollLeft = scrollLeft - walk;
-});
-
-// Auto Slide
-let autoIndex = 0;
-setInterval(() => {
-  const slides = document.querySelectorAll('.carousel-slide');
-  autoIndex = (autoIndex + 1) % slides.length;
-  track.scrollTo({
-    left: autoIndex * track.clientWidth,
-    behavior: 'smooth'
+  track.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
   });
-}, 3000); // 4 seconds interval
+
+  track.addEventListener('mouseleave', () => {
+    isDragging = false;
+    track.classList.remove('dragging');
+  });
+
+  track.addEventListener('mouseup', () => {
+    isDragging = false;
+    track.classList.remove('dragging');
+  });
+
+  track.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch Support
+  track.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+
+  track.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Auto Slide
+  let autoIndex = 0;
+  setInterval(() => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    autoIndex = (autoIndex + 1) % slides.length;
+    track.scrollTo({
+      left: autoIndex * track.clientWidth,
+      behavior: 'smooth'
+    });
+  }, 3000);
+}
 
 
 
 
 // Buy Now Modal
-const modal = document.getElementById("buyNowModal");
-const btn = document.getElementById("buyNowBtn");
-const closeBtn = document.querySelector(".close");
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("buyNowModal");
+  const btn = document.getElementById("buyNowBtn"); // might be null if user not logged in
+  const closeBtn = document.querySelector(".close");
+  const loadingMsg = document.getElementById("loadingMsg");
+  const buyNowForm = document.getElementById("buyNowForm");
 
-btn.onclick = () => (modal.style.display = "block");
-closeBtn.onclick = () => (modal.style.display = "none");
+  // only attach modal events if button exists (user is logged in)
+  if (btn && modal && closeBtn) {
+    btn.onclick = () => (modal.style.display = "block");
+    closeBtn.onclick = () => (modal.style.display = "none");
+  }
 
-document.getElementById("buyNowForm").onsubmit = function (e) {
-  e.preventDefault();
+  // only bind form submission if form exists
+  if (buyNowForm) {
+    buyNowForm.onsubmit = function (e) {
+      e.preventDefault();
 
-  const formData = new FormData(this);
+      const formData = new FormData(this);
 
-  fetch("buy_now.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => res.text())
-    .then((data) => {
-      alert(data);
-      modal.style.display = "none";
-      document.getElementById("loadingMsg").style.display = "none";
-    })
-    .catch((err) => console.log(err));
-};
+      fetch("buy_now.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.text())
+        .then((data) => {
+          alert(data);
+          if (modal) modal.style.display = "none";
+          if (loadingMsg) loadingMsg.style.display = "none";
+        })
+        .catch((err) => console.error(err));
+    };
 
-document.getElementById("buyNowForm").addEventListener("submit", function () {
-  document.getElementById("loadingMsg").style.display = "block";
+    buyNowForm.addEventListener("submit", function () {
+      if (loadingMsg) loadingMsg.style.display = "block";
+    });
+  }
 });
+
 
 // Checkout Modal
 //     document.addEventListener('DOMContentLoaded', () => {
